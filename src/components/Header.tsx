@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
           {/* Logo */}  
           <div className="flex items-center pl-12 sm:pl-16 md:pl-20 lg:pl-24 xl:pl-28">
             <img 
-              src="/src/assets/logo.png" 
+              src="../assets/logo.png" 
               alt="Caffeine Cove Logo" 
               className="h-7 sm:h-8 md:h-9 lg:h-10 xl:h-12 w-auto object-contain cursor-pointer transition-all duration-300 hover:opacity-90"
               onClick={() => handlePageNavigation('home')}
