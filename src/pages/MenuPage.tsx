@@ -7,6 +7,7 @@ import drinksMenu3 from '../assets/CC Drinks_page-0003.jpg';
 import foodMenu1 from '../assets/CC Food01.jpg';
 import foodMenu2 from '../assets/CC Food02.jpg';
 
+
 interface MenuPageProps {
   setCurrentPage?: (page: 'home' | 'about' | 'menu' | 'gallery' | 'contact') => void;
 }
