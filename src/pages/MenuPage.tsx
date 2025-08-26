@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import drinksMenu1 from '../assets/CC Drinks_page-0001.jpg';
-import drinksMenu2 from '../assets/CC Drinks_page-0002.jpg';
-import drinksMenu3 from '../assets/CC Drinks_page-0003.jpg';
-import foodMenu1 from '../assets/CC Food01.jpg';
-import foodMenu2 from '../assets/CC Food02.jpg';
+import drinksMenu1 from '../assets/CC_Drinks_page-0001.jpg';
+import drinksMenu2 from '../assets/CC_Drinks_page-0002.jpg';
+import drinksMenu3 from '../assets/CC_Drinks_page-0003.jpg';
+import foodMenu1 from '../assets/CC_Food01.jpg';
+import foodMenu2 from '../assets/CC_Food02.jpg';
 
 
 interface MenuPageProps {
