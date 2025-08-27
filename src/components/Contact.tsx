@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
                   
                   <div className="flex items-center justify-center space-x-2 mt-2">
                     <i className="bi bi-sun text-yellow-500 text-lg"></i>
-                    <span className="font-poppins text-coffee/80 font-medium text-base sm:text-lg">7:00 AM - 10:00 PM</span>
+                    <span className="font-poppins text-coffee/80 font-medium text-base sm:text-lg">9:00 AM - 12:00 PM</span>
                     <i className="bi bi-moon-stars text-indigo-500 text-lg"></i>
                   </div>
                 </div>

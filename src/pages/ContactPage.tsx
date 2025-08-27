@@ -83,47 +83,62 @@ const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage }) => {
                 </div>
               </div>
 
-              {/* Opening Hours Card - Full Width to match map */}
-              <div className="bg-marble-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 w-full mt-8 sm:mt-12">
-                <h3 className="text-xl sm:text-2xl font-outfit font-bold text-coffee text-center mb-8">Opening Hours</h3>
+            {/* Opening Hours Card */}
+            <div className="bg-marble-white p-6 sm:p-8 rounded-2xl shadow-lg border border-natural-wood/20 w-full overflow-hidden relative">
+                {/* Background Pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-natural-wood/5 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
                 
-                <div className="flex flex-col md:flex-row justify-between gap-6 w-full max-w-4xl mx-auto">
-                  {/* Days Column */}
-                  <div className="w-full md:w-1/3">
-                    <div className="space-y-2">
-                      <div className="flex items-center h-12">
-                        <p className="font-poppins font-semibold text-coffee text-lg">Monday</p>
-                      </div>
-                      <div className="h-px bg-natural-wood/20 w-full"></div>
-                      <div className="flex items-center h-12">
-                        <p className="font-poppins font-semibold text-coffee text-lg">Sunday</p>
-                      </div>
+                {/* Main Content */}
+                <div className="relative z-10">
+                    {/* Title Section */}
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 bg-natural-wood rounded-lg flex items-center justify-center">
+                            <i className="bi bi-clock text-marble-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-outfit font-bold text-coffee">Opening Hours</h3>
+                            <p className="text-coffee/60 font-poppins text-sm">Always ready to welcome you</p>
+                        </div>
                     </div>
-                  </div>
-                  
-                  {/* Times Column */}
-                  <div className="w-full md:w-2/3">
-                    <div className="bg-white/80 p-4 rounded-lg shadow-sm h-full flex items-center">
-                      <div className="flex items-center space-x-3">
-                        <i className="bi bi-sun text-yellow-500 text-xl"></i>
-                        <span className="font-poppins text-coffee/80 font-medium">7:00 AM</span>
-                      </div>
-                      <div className="h-px bg-natural-wood/30 flex-1 mx-4"></div>
-                      <div className="flex items-center space-x-3">
-                        <i className="bi bi-moon-stars text-indigo-500 text-xl"></i>
-                        <span className="font-poppins text-coffee/80 font-medium">10:00 PM</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="mt-6 p-3 sm:p-4 bg-natural-wood/10 rounded-lg border border-natural-wood/20 text-center">
-                  <p className="text-coffee/70 font-poppins text-xs sm:text-sm italic">
-                    <i className="bi bi-info-circle mr-1 sm:mr-2"></i>
-                    Hours may vary on holidays. Please call ahead for special hours.
-                  </p>
+                    {/* Hours Display */}
+                    <div className="bg-soft-beige/40 rounded-xl p-5 mb-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <div className="flex items-center gap-3">
+                                <i className="bi bi-calendar3 text-natural-wood text-xl"></i>
+                                <span className="font-poppins font-semibold text-coffee text-lg">Monday - Sunday</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <i className="bi bi-clock-history text-natural-wood text-xl"></i>
+                                <span className="font-poppins font-bold text-natural-wood text-xl">9:00 AM - 12:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Features Row */}
+                    <div className="flex flex-wrap justify-center sm:justify-between gap-4 mb-5">
+                        <div className="flex items-center gap-2 bg-marble-white/80 px-4 py-2 rounded-full border border-natural-wood/40">
+                            <i className="bi bi-cup-hot text-natural-wood"></i>
+                            <span className="font-poppins text-coffee text-sm font-medium">Fresh Coffee</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-marble-white/80 px-4 py-2 rounded-full border border-natural-wood/40">
+                            <i className="bi bi-wifi text-natural-wood"></i>
+                            <span className="font-poppins text-coffee text-sm font-medium">Free WiFi</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-marble-white/80 px-4 py-2 rounded-full border border-natural-wood/40">
+                            <i className="bi bi-heart text-natural-wood"></i>
+                            <span className="font-poppins text-coffee text-sm font-medium">Cozy Space</span>
+                        </div>
+                    </div>
+
+                    {/* Notice */}
+                    <div className="flex items-start gap-3 p-4 bg-natural-wood/5 rounded-lg border-l-4 border-natural-wood/30">
+                        <i className="bi bi-info-circle text-natural-wood mt-0.5 flex-shrink-0"></i>
+                        <p className="text-coffee/70 font-poppins text-sm leading-relaxed">
+                        Hours may vary on holidays. Please call ahead for special hours.                        </p>
+                    </div>
                 </div>
-              </div>
+            </div>
             </div>
           </div>
         </section>
