@@ -123,7 +123,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
               
               <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
                 <p className="text-marble-white/60 font-poppins text-xs sm:text-sm">
-                  Powered by Bixil 
+                  Powered by Binfinity
                 </p>
                 <button 
                   onClick={scrollToTop}

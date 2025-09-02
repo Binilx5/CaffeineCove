@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import cafeInterior7 from '../assets/cafe-interior7.jpg';
+import cafeInterior7 from '../assets/cafe-interior15.jpg';
 
 const About: React.FC = () => {
   const [isTextVisible, setIsTextVisible] = useState(false);

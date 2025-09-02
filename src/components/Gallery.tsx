@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import cafeInterior8 from '../assets/cafe-interior8.jpg';
-import cafeInterior9 from '../assets/cafe-interior9.jpg';
-import cafeInterior4 from '../assets/cafe-interior4.jpg';
+import cafeInterior9 from '../assets/cafe-interior12.jpg';
+import cafeInterior4 from '../assets/cafe-interior10.jpg';
 
 const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -46,7 +46,7 @@ const Gallery: React.FC = () => {
     },
     {
       name: "Dhruv Patel",
-      role: "Business Owner",
+      role: "Student",
       text: "The perfect spot for meetings and networking. The ambiance is professional yet relaxed, and the coffee quality is consistently excellent.",
       rating: 5
     },
@@ -221,7 +221,7 @@ const Gallery: React.FC = () => {
               {/* Navigation Arrows */}
               <button
                 onClick={prevReview}
-                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-coffee hover:bg-natural-wood text-white p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                className="absolute left-0 sm:left-4 top-1/2 transform -translate-y-1/2 bg-coffee hover:bg-natural-wood text-white p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 z-10"
                 aria-label="Previous review"
               >
                 <i className="bi bi-chevron-left text-lg sm:text-xl"></i>
@@ -229,7 +229,7 @@ const Gallery: React.FC = () => {
               
               <button
                 onClick={nextReview}
-                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-coffee hover:bg-natural-wood text-white p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+                className="absolute right-0 sm:right-4 top-1/2 transform -translate-y-1/2 bg-coffee hover:bg-natural-wood text-white p-2 sm:p-3 rounded-full shadow-lg transition-all duration-300 z-10"
                 aria-label="Next review"
               >
                 <i className="bi bi-chevron-right text-lg sm:text-xl"></i>

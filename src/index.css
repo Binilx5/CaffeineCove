@@ -31,6 +31,7 @@
 html, body {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 html::-webkit-scrollbar,

@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import cafeInterior2 from '../assets/cafe-interior2.jpg';
-import cafeInterior3 from '../assets/cafe-interior3.jpg';
-import cafeInterior4 from '../assets/cafe-interior4.jpg';
+import cafeInterior2 from '../assets/cafe-interior8.jpg';
+import cafeInterior3 from '../assets/cafe-interior12.jpg';
+import cafeInterior4 from '../assets/cafe-interior10.jpg';
+import drink1 from '../assets/drink1.jpg';
+import drink2 from '../assets/drink2.jpg';
+
 
 interface GalleryPageProps {
   setCurrentPage?: (page: 'home' | 'about' | 'menu' | 'gallery' | 'contact') => void;
@@ -19,6 +22,8 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ setCurrentPage }) => {
   const imageRefs = [
     useRef<HTMLDivElement>(null), 
     useRef<HTMLDivElement>(null), 
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null)
   ];
 
@@ -34,6 +39,14 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ setCurrentPage }) => {
     {
       url: cafeInterior4,
       alt: 'Cozy Seating Area'
+    },
+    {
+      url: drink1,
+      alt: 'Red Wine'
+    },
+    {
+      url: drink2,
+      alt: 'Old Fashion'
     }
   ];
 
