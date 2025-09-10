@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface FooterProps {
   setCurrentPage?: (page: 'home' | 'about' | 'menu' | 'gallery' | 'contact') => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
+  const craftedByRef = useRef<HTMLButtonElement>(null);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -19,6 +20,73 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
     }
     // Remove the else block that was scrolling to sections
   };
+
+  useEffect(() => {
+    let animationTimeout: ReturnType<typeof setTimeout>;
+    let isHovering = false;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !isHovering) {
+            const button = entry.target as HTMLButtonElement;
+            const reflection = button.querySelector('.reflection') as HTMLElement;
+            if (reflection) {
+              // Clear any existing timeouts
+              clearTimeout(animationTimeout);
+              
+              // Force reflow to ensure animation restarts
+              void reflection.offsetWidth;
+              
+              // Trigger the animation
+              reflection.style.opacity = '1';
+              reflection.classList.add('animate-[slide_1.5s_ease-in-out_forwards]');
+              
+              // Reset after animation
+              animationTimeout = setTimeout(() => {
+                if (!isHovering) {
+                  reflection.style.opacity = '0';
+                }
+                reflection.classList.remove('animate-[slide_1.5s_ease-in-out_forwards]');
+              }, 1500);
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const handleMouseEnter = () => {
+      isHovering = true;
+      const reflection = craftedByRef.current?.querySelector('.reflection') as HTMLElement;
+      if (reflection) {
+        reflection.style.opacity = '1';
+      }
+    };
+
+    const handleMouseLeave = () => {
+      isHovering = false;
+      const reflection = craftedByRef.current?.querySelector('.reflection') as HTMLElement;
+      if (reflection) {
+        reflection.style.opacity = '0';
+      }
+    };
+
+    if (craftedByRef.current) {
+      observer.observe(craftedByRef.current);
+      craftedByRef.current.addEventListener('mouseenter', handleMouseEnter);
+      craftedByRef.current.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      clearTimeout(animationTimeout);
+      if (craftedByRef.current) {
+        observer.unobserve(craftedByRef.current);
+        craftedByRef.current.removeEventListener('mouseenter', handleMouseEnter);
+        craftedByRef.current.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, []);
 
   return (
     <footer className="bg-walnut-brown text-marble-white py-12 sm:py-16">
@@ -122,9 +190,24 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
               </p>
               
               <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
-                <p className="text-marble-white/60 font-poppins text-xs sm:text-sm">
-                  Powered by Binfinity
-                </p>
+                <button 
+                  ref={craftedByRef}
+                  className="group relative inline-block rounded-lg bg-walnut-brown border border-marble-white/20 active:scale-95 transition-all duration-300 overflow-hidden border-animated"
+                >
+                  <div className="relative bg-walnut-brown rounded-lg transition-colors duration-200">
+                    <div className="absolute inset-0 overflow-hidden">
+                      <div 
+                        className="reflection absolute inset-0 bg-gradient-to-r from-transparent via-marble-white to-transparent w-1/3 transform -skew-x-12 -translate-x-full opacity-0 group-hover:opacity-100 group-hover:animate-[slide_1.5s_ease-in-out_forwards]"
+                      ></div>
+                    </div>
+                    <div className="flex items-center space-x-2 px-3 py-2">
+                      <div className="w-1.5 h-1.5 bg-coffee rounded-full group-hover:bg-marble-white transition-all duration-300 group-hover:scale-110"></div>
+                      <span className="text-marble-white font-poppins text-xs">
+                        Powered by <span className="font-semibold text-coffee group-hover:text-coffee/90 transition-colors duration-300">Binfinity</span>
+                      </span>
+                    </div>
+                  </div>
+                </button>
                 <button 
                   onClick={scrollToTop}
                   className="bg-natural-wood hover:bg-soft-beige hover:text-coffee p-1.5 sm:p-2 rounded-full transition-all duration-300 transform hover:scale-110"

@@ -12,6 +12,7 @@ export default {
         'walnut-brown': '#8B6F4E',
         'marble-white': '#F7F7F7',
         'muted-sand': '#E8DDCF',
+        'coffee': '#6F4E37',
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
@@ -21,6 +22,7 @@ export default {
         'fade-in': 'fadeIn 0.8s ease-in-out',
         'slide-up': 'slideUp 0.6s ease-out',
         'zoom-in': 'zoomIn 0.5s ease-out',
+        'border-flow': 'borderFlow 3s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -34,6 +36,14 @@ export default {
         zoomIn: {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        borderFlow: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        slide: {
+          '0%': { transform: 'translateX(-100%) skewX(-12deg)' },
+          '100%': { transform: 'translateX(400%) skewX(-12deg)' },
         },
       },
     },
