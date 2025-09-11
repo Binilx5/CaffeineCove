@@ -10,15 +10,26 @@ import AboutPage from './pages/AboutPage';
 import MenuPage from './pages/MenuPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
+import ReloadLoader from './components/ReloadLoader';
 
 type Page = 'home' | 'about' | 'menu' | 'gallery' | 'contact';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+  // Handle loader completion
+  const handleLoaderComplete = () => {
+    setIsLoading(false);
     window.scrollTo(0, 0);
-  }, [currentPage]);
+  };
+
+  // Page change effect (without loader for transitions)
+  useEffect(() => {
+    if (!isLoading) {
+      window.scrollTo(0, 0);
+    }
+  }, [currentPage, isLoading]);
 
   // Provide navigation context to child components
   const navigationProps = {
@@ -52,6 +63,11 @@ function App() {
         );
     }
   };
+
+  // Show loading screen only once
+  if (isLoading) {
+    return <ReloadLoader onComplete={handleLoaderComplete} duration={10000} />;
+  }
 
   return (
     <div className="min-h-screen bg-marble-white font-poppins">

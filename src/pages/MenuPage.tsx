@@ -60,7 +60,6 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
                       alt="Drinks Menu Page 1" 
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-coffee/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
                 
@@ -71,7 +70,6 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
                       alt="Drinks Menu Page 2" 
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-coffee/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
                 
@@ -82,7 +80,6 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
                       alt="Drinks Menu Page 3" 
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-coffee/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
               </div>
@@ -114,7 +111,6 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
                       alt="Food Menu Page 1" 
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-coffee/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
                 
@@ -125,7 +121,6 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
                       alt="Food Menu Page 2" 
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-coffee/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
               </div>

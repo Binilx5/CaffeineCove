@@ -5,7 +5,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
-  const craftedByRef = useRef<HTMLButtonElement>(null);
+  const craftedByRef = useRef<HTMLAnchorElement>(null);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -190,7 +190,10 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
               </p>
               
               <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
-                <button 
+                <a
+                  href="https://instagram.com/binilradadiya_"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   ref={craftedByRef}
                   className="group relative inline-block rounded-lg bg-walnut-brown border border-marble-white/20 active:scale-95 transition-all duration-300 overflow-hidden border-animated"
                 >
@@ -207,7 +210,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
                       </span>
                     </div>
                   </div>
-                </button>
+                </a>
                 <button 
                   onClick={scrollToTop}
                   className="bg-natural-wood hover:bg-soft-beige hover:text-coffee p-1.5 sm:p-2 rounded-full transition-all duration-300 transform hover:scale-110"
