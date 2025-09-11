@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import cafeInterior from '../assets/cafe-interior.jpg';
+import { preloadMultipleImages } from '../utils/imageUtils';
 
 const Hero: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
+    // Preload critical hero image
     const img = new Image();
     img.onload = () => setImageLoaded(true);
     img.src = cafeInterior;
+    
+    // Preload other critical images for faster navigation
+    const criticalImages = [
+      '/src/assets/cafe-interior8.jpg',
+      '/src/assets/coffeebg2.png',
+      '/src/assets/logo.png',
+      '/src/assets/cafe-interior10.jpg',
+      '/src/assets/cafe-interior12.jpg'
+    ];
+    
+    // Preload in background without blocking main image
+    preloadMultipleImages(criticalImages);
   }, []);
 
   const scrollToSection = (sectionId: string) => {

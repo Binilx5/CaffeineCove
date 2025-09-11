@@ -1,21 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { preloadMultipleImages } from '../utils/imageUtils';
 import drinksMenu1 from '../assets/CC_Drinks_page-0001.jpg';
 import drinksMenu2 from '../assets/CC_Drinks_page-0002.jpg';
 import drinksMenu3 from '../assets/CC_Drinks_page-0003.jpg';
 import foodMenu1 from '../assets/CC_Food01.jpg';
 import foodMenu2 from '../assets/CC_Food02.jpg';
 
-
 interface MenuPageProps {
   setCurrentPage?: (page: 'home' | 'about' | 'menu' | 'gallery' | 'contact') => void;
 }
 
 const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
+  const [loadedImages, setLoadedImages] = useState(new Set<string>());
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Preload menu images
+    const menuImages = [drinksMenu1, drinksMenu2, drinksMenu3, foodMenu1, foodMenu2];
+    preloadMultipleImages(menuImages);
   }, []);
+
+  const handleImageLoad = (imageSrc: string) => {
+    setLoadedImages(prev => new Set(prev).add(imageSrc));
+  };
 
   return (
     <div className="min-h-screen bg-marble-white font-poppins">
@@ -55,30 +65,60 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                 <div className="group cursor-pointer">
                   <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    {!loadedImages.has(drinksMenu1) && (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center z-10">
+                        <div className="text-gray-400 text-sm">Loading menu...</div>
+                      </div>
+                    )}
                     <img 
                       src={drinksMenu1} 
                       alt="Drinks Menu Page 1" 
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      onLoad={() => handleImageLoad(drinksMenu1)}
+                      className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${
+                        loadedImages.has(drinksMenu1) ? 'opacity-100' : 'opacity-0'
+                      }`}
                     />
                   </div>
                 </div>
                 
                 <div className="group cursor-pointer">
                   <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    {!loadedImages.has(drinksMenu2) && (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center z-10">
+                        <div className="text-gray-400 text-sm">Loading menu...</div>
+                      </div>
+                    )}
                     <img 
                       src={drinksMenu2} 
                       alt="Drinks Menu Page 2" 
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      onLoad={() => handleImageLoad(drinksMenu2)}
+                      className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${
+                        loadedImages.has(drinksMenu2) ? 'opacity-100' : 'opacity-0'
+                      }`}
                     />
                   </div>
                 </div>
                 
                 <div className="group cursor-pointer">
                   <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    {!loadedImages.has(drinksMenu3) && (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center z-10">
+                        <div className="text-gray-400 text-sm">Loading menu...</div>
+                      </div>
+                    )}
                     <img 
                       src={drinksMenu3} 
                       alt="Drinks Menu Page 3" 
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      onLoad={() => handleImageLoad(drinksMenu3)}
+                      className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${
+                        loadedImages.has(drinksMenu3) ? 'opacity-100' : 'opacity-0'
+                      }`}
                     />
                   </div>
                 </div>
@@ -106,20 +146,40 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto">
                 <div className="group cursor-pointer">
                   <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    {!loadedImages.has(foodMenu1) && (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center z-10">
+                        <div className="text-gray-400 text-sm">Loading menu...</div>
+                      </div>
+                    )}
                     <img 
                       src={foodMenu1} 
                       alt="Food Menu Page 1" 
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      onLoad={() => handleImageLoad(foodMenu1)}
+                      className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${
+                        loadedImages.has(foodMenu1) ? 'opacity-100' : 'opacity-0'
+                      }`}
                     />
                   </div>
                 </div>
                 
                 <div className="group cursor-pointer">
                   <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    {!loadedImages.has(foodMenu2) && (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center z-10">
+                        <div className="text-gray-400 text-sm">Loading menu...</div>
+                      </div>
+                    )}
                     <img 
                       src={foodMenu2} 
                       alt="Food Menu Page 2" 
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      onLoad={() => handleImageLoad(foodMenu2)}
+                      className={`w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 ${
+                        loadedImages.has(foodMenu2) ? 'opacity-100' : 'opacity-0'
+                      }`}
                     />
                   </div>
                 </div>

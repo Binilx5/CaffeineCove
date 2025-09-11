@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { createImageIntersectionObserver } from '../utils/imageUtils';
 import cafeInterior2 from '../assets/cafe-interior8.jpg';
 import cafeInterior3 from '../assets/cafe-interior12.jpg';
 import cafeInterior4 from '../assets/cafe-interior10.jpg';
@@ -19,6 +20,7 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ setCurrentPage }) => {
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [visibleImages, setVisibleImages] = useState([false, false, false]);
+  const [loadedImages, setLoadedImages] = useState(new Set<number>());
   const imageRefs = [
     useRef<HTMLDivElement>(null), 
     useRef<HTMLDivElement>(null), 
@@ -54,35 +56,29 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ setCurrentPage }) => {
   useEffect(() => {
     // On mobile, show all images immediately
     if (window.innerWidth < 768) {
-      setVisibleImages([true, true, true]);
+      setVisibleImages([true, true, true, true, true]);
       return;
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const index = imageRefs.findIndex(ref => ref.current === entry.target);
-        if (entry.isIntersecting && index !== -1) {
-          setVisibleImages(prev => {
-            const newVisible = [...prev];
-            newVisible[index] = true;
-            return newVisible;
-          });
-        }
-      });
-    }, { 
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px' // Trigger animation slightly before element is in view
+    const observer = createImageIntersectionObserver((entry) => {
+      const index = imageRefs.findIndex(ref => ref.current === entry.target);
+      if (entry.isIntersecting && index !== -1) {
+        setVisibleImages(prev => {
+          const newVisible = [...prev];
+          newVisible[index] = true;
+          return newVisible;
+        });
+      }
     });
 
-    const currentRefs = [...imageRefs];
-    currentRefs.forEach(ref => {
+    imageRefs.forEach(ref => {
       if (ref.current) {
         observer.observe(ref.current);
       }
     });
 
     return () => {
-      currentRefs.forEach(ref => {
+      imageRefs.forEach(ref => {
         if (ref.current) {
           observer.unobserve(ref.current);
         }
@@ -135,8 +131,18 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ setCurrentPage }) => {
                     <img 
                       src={image.url} 
                       alt={image.alt}
-                      className="w-full h-64 sm:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                      onLoad={() => setLoadedImages(prev => new Set(prev).add(index))}
+                      className={`w-full h-64 sm:h-80 object-cover transition-all duration-500 group-hover:scale-105 ${
+                        loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
+                      }`}
                     />
+                    {!loadedImages.has(index) && (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
+                        <div className="text-gray-400 text-sm">Loading...</div>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <div className="text-white">
                         <p className="font-poppins font-medium text-lg">{image.alt}</p>
@@ -165,6 +171,7 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ setCurrentPage }) => {
               <img 
                 src={selectedImage} 
                 alt="Enlarged view" 
+                loading="lazy"
                 className="max-h-[80vh] w-auto mx-auto rounded-lg"
               />
             </div>
