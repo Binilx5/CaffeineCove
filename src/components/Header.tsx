@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
-
 
 interface HeaderProps {
   currentPage?: 'home' | 'about' | 'menu' | 'gallery' | 'contact';
@@ -11,6 +11,8 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,21 +29,39 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
     return () => clearTimeout(timer);
   }, []);
 
-
+  // Helper function to get current page from location
+  const getCurrentPage = () => {
+    const path = location.pathname;
+    if (path === '/') return 'home';
+    if (path === '/about') return 'about';
+    if (path === '/menu') return 'menu';
+    if (path === '/gallery') return 'gallery';
+    if (path === '/contact') return 'contact';
+    return 'home';
+  };
 
   // Helper function to handle page navigation
   const handlePageNavigation = (page: 'home' | 'about' | 'menu' | 'gallery' | 'contact') => {
     if (setCurrentPage) {
       setCurrentPage(page);
-    } else if (page === 'home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const element = document.getElementById(page);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      // Use React Router navigation
+      if (page === 'home') {
+        navigate('/');
+      } else {
+        navigate(`/${page}`);
       }
-    } 
+    }
     setIsMobileMenuOpen(false);
+  };
+
+  // Helper function to get button classes (consistent styling for all pages)
+  const getButtonClasses = () => {
+    return 'text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap';
+  };
+
+  const getMobileButtonClasses = () => {
+    return 'text-coffee hover:text-natural-wood hover:bg-coffee/5 transition-colors duration-300 font-poppins font-semibold text-lg text-left py-2 px-3 rounded-lg w-full text-left';
   };
 
   return (
@@ -64,31 +84,31 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
           <div className="hidden md:flex items-center space-x-6 md:space-x-8 lg:space-x-10 xl:space-x-12 pr-6 md:pr-8 lg:pr-12 xl:pr-16">
             <button 
               onClick={() => handlePageNavigation('home')} 
-              className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap"
+              className={getButtonClasses()}
             >
               Home
             </button>
             <button 
               onClick={() => handlePageNavigation('about')} 
-              className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap"
+              className={getButtonClasses()}
             >
               About
             </button>
             <button 
               onClick={() => handlePageNavigation('menu')} 
-              className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap"
+              className={getButtonClasses()}
             >
               Menu
             </button>
             <button 
               onClick={() => handlePageNavigation('gallery')} 
-              className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap"
+              className={getButtonClasses()}
             >
               Gallery
             </button>
             <button 
               onClick={() => handlePageNavigation('contact')} 
-              className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-sm md:text-base lg:text-lg xl:text-xl whitespace-nowrap"
+              className={getButtonClasses()}
             >
               Contact
             </button>
@@ -110,31 +130,31 @@ const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
             <div className="flex flex-col space-y-4 px-4">
               <button 
                 onClick={() => handlePageNavigation('home')} 
-                className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-lg text-left py-2 px-3 rounded-lg hover:bg-coffee/5 w-full text-left"
+                className={getMobileButtonClasses()}
               >
                 Home
               </button>
               <button 
                 onClick={() => handlePageNavigation('about')} 
-                className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-lg text-left py-2 px-3 rounded-lg hover:bg-coffee/5 w-full text-left"
+                className={getMobileButtonClasses()}
               >
                 About Us
               </button>
               <button 
                 onClick={() => handlePageNavigation('menu')} 
-                className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-lg text-left py-2 px-3 rounded-lg hover:bg-coffee/5 w-full text-left"
+                className={getMobileButtonClasses()}
               >
                 Menu
               </button>
               <button 
                 onClick={() => handlePageNavigation('gallery')} 
-                className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-lg text-left py-2 px-3 rounded-lg hover:bg-coffee/5 w-full text-left"
+                className={getMobileButtonClasses()}
               >
                 Gallery
               </button>
               <button 
                 onClick={() => handlePageNavigation('contact')} 
-                className="text-coffee hover:text-natural-wood transition-colors duration-300 font-poppins font-semibold text-lg text-left py-2 px-3 rounded-lg hover:bg-coffee/5 w-full text-left"
+                className={getMobileButtonClasses()}
               >
                 Contact
               </button>

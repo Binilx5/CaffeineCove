@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -14,8 +15,61 @@ import ReloadLoader from './components/ReloadLoader';
 
 type Page = 'home' | 'about' | 'menu' | 'gallery' | 'contact';
 
+// Home page component
+function HomePage() {
+  const navigate = useNavigate();
+  
+  const setCurrentPage = (page: Page) => {
+    if (page === 'home') {
+      navigate('/');
+    } else {
+      navigate(`/${page}`);
+    }
+  };
+
+  return (
+    <>
+      <Header currentPage="home" setCurrentPage={setCurrentPage} />
+      <Hero />
+      <About />
+      <Menu setCurrentPage={setCurrentPage} />
+      <Gallery />
+      <Contact />
+      <Footer setCurrentPage={setCurrentPage} />
+    </>
+  );
+}
+
+// App Routes component
+function AppRoutes() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const setCurrentPage = (page: Page) => {
+    if (page === 'home') {
+      navigate('/');
+    } else {
+      navigate(`/${page}`);
+    }
+  };
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage setCurrentPage={setCurrentPage} />} />
+      <Route path="/menu" element={<MenuPage setCurrentPage={setCurrentPage} />} />
+      <Route path="/gallery" element={<GalleryPage setCurrentPage={setCurrentPage} />} />
+      <Route path="/contact" element={<ContactPage setCurrentPage={setCurrentPage} />} />
+    </Routes>
+  );
+}
+
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
   const [isLoading, setIsLoading] = useState(true);
 
   // Handle loader completion
@@ -24,55 +78,17 @@ function App() {
     window.scrollTo(0, 0);
   };
 
-  // Page change effect (without loader for transitions)
-  useEffect(() => {
-    if (!isLoading) {
-      window.scrollTo(0, 0);
-    }
-  }, [currentPage, isLoading]);
-
-  // Provide navigation context to child components
-  const navigationProps = {
-    currentPage,
-    setCurrentPage: setCurrentPage as (page: Page) => void
-  };
-
-  // Render the appropriate page based on currentPage state
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'about':
-        return <AboutPage setCurrentPage={setCurrentPage} />;
-      case 'menu':
-        return <MenuPage setCurrentPage={setCurrentPage} />;
-      case 'gallery':
-        return <GalleryPage setCurrentPage={setCurrentPage} />;
-      case 'contact':
-        return <ContactPage setCurrentPage={setCurrentPage} />;
-      case 'home':
-      default:
-        return (
-          <>
-            <Header {...navigationProps} />
-            <Hero />
-            <About />
-            <Menu setCurrentPage={setCurrentPage} />
-            <Gallery />
-            <Contact />
-            <Footer setCurrentPage={setCurrentPage} />
-          </>
-        );
-    }
-  };
-
   // Show loading screen only once
   if (isLoading) {
     return <ReloadLoader onComplete={handleLoaderComplete} duration={10000} />;
   }
 
   return (
-    <div className="min-h-screen bg-marble-white font-poppins">
-      {renderPage()}
-    </div>
+    <Router>
+      <div className="min-h-screen bg-marble-white font-poppins">
+        <AppRoutes />
+      </div>
+    </Router>
   );
 }
 

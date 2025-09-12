@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caffeine Cove</title>
+  <script>
+    // This script handles client-side routing for GitHub Pages
+    // It redirects 404 pages to the main app, allowing React Router to handle routing
+    const path = window.location.pathname.split('/').filter(Boolean);
+    const redirectPath = path.length > 0 ? '/#/' + path.join('/') : '/';
+    window.location.replace(window.location.origin + redirectPath);
+  </script>
+</head>
+<body>
+  <div>Redirecting...</div>
+</body>
+</html>
