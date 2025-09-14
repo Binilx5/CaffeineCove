@@ -7,6 +7,7 @@ import Menu from './components/Menu';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FallingText from './components/FallingText';
 import AboutPage from './pages/AboutPage';
 import MenuPage from './pages/MenuPage';
 import GalleryPage from './pages/GalleryPage';
@@ -33,6 +34,39 @@ function HomePage() {
       <Hero />
       <About />
       <Menu setCurrentPage={setCurrentPage} />
+      
+      {/* Interactive Falling Text Section */}
+      <section className="py-16 sm:py-20 bg-soft-beige">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-outfit font-bold text-coffee mb-3 sm:mb-4 md:mb-6">
+                What Our Customers Love Most
+              </h2>
+              <div className="w-16 sm:w-20 md:w-24 h-1 bg-natural-wood mx-auto mb-4 sm:mb-6 md:mb-8"></div>
+              <p className="text-sm sm:text-base md:text-lg text-coffee/70 font-poppins max-w-2xl mx-auto px-4 mb-8">
+                Discover our most popular drinks and dishes - interact to see them come to life!
+              </p>
+            </div>
+            
+            <div className="bg-marble-white rounded-3xl shadow-xl p-6 sm:p-8 md:p-12">
+              <div className="h-64 sm:h-80 md:h-96">
+                <FallingText
+                  text={`Espresso, Americano, Latte, Mocha, Cold Brew, Pink Paradise, Smokey Butter, Caramel Frappe, Mont Blanc, Pizza, Pasta, Cheese Cake, Wrap, Sandwich`}
+                  highlightWords={["Espresso", "Latte", "Cold", "Brew", "Smokey", "Butter", "Mont", "Blanc", "Pasta ", "Cheese", "Cake"]}
+                  trigger="hover"
+                  backgroundColor="transparent"
+                  wireframes={false}
+                  gravity={0.56}
+                  fontSize="clamp(1rem, 2.5vw, 2rem)"
+                  mouseConstraintStiffness={0.9}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Gallery />
       <Contact />
       <Footer setCurrentPage={setCurrentPage} />
