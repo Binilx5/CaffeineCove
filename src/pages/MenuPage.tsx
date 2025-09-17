@@ -52,7 +52,7 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
                     <div className="w-12 h-0.5 bg-natural-wood animate-pulse"></div>
                     <div className="flex items-center space-x-3 group cursor-default">
                       <div className="w-2 h-2 bg-natural-wood rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                      <span className="text-lg sm:text-xl font-poppins font-medium text-coffee/80 group-hover:text-coffee transition-colors duration-300 tracking-wider">
+                      <span className="text-lg sm:text-xl font-poppins font-medium text-coffee group-hover:text-coffee/90 transition-colors duration-300 tracking-wider">
                         BEVERAGES
                       </span>
                       <div className="w-2 h-2 bg-natural-wood rounded-full group-hover:scale-150 transition-transform duration-300"></div>
@@ -133,7 +133,7 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
                     <div className="w-12 h-0.5 bg-natural-wood animate-pulse"></div>
                     <div className="flex items-center space-x-3 group cursor-default">
                       <div className="w-2 h-2 bg-natural-wood rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-                      <span className="text-lg sm:text-xl font-poppins font-medium text-coffee/80 group-hover:text-coffee transition-colors duration-300 tracking-wider">
+                      <span className="text-lg sm:text-xl font-poppins font-medium text-coffee group-hover:text-coffee/90 transition-colors duration-300 tracking-wider">
                         FOOD
                       </span>
                       <div className="w-2 h-2 bg-natural-wood rounded-full group-hover:scale-150 transition-transform duration-300"></div>

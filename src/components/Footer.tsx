@@ -186,7 +186,7 @@ const Footer: React.FC<FooterProps> = ({ setCurrentPage }) => {
           <div className="border-t border-marble-white/20 pt-4 sm:pt-6 md:pt-8">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
               <p className="text-marble-white/60 font-poppins text-xs sm:text-sm text-center sm:text-left">
-                © 2024 Caffeine Cove. All rights reserved.
+                © 2025 Caffeine Cove. All rights reserved.
               </p>
               
               <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">

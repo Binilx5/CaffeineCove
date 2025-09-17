@@ -20,7 +20,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage }) => {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12 sm:mb-16 mt-12 sm:mt-16">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-outfit font-bold text-coffee mb-4 sm:mb-6">
-                  Visit Us
+                  Contact Us
                 </h2>
                 <div className="w-20 sm:w-24 h-1 bg-natural-wood mx-auto mb-6 sm:mb-8"></div>
                 <p className="text-base sm:text-lg text-coffee/70 font-poppins max-w-2xl mx-auto px-4">

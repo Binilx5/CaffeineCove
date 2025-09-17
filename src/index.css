@@ -286,3 +286,44 @@ html {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
 }
+
+/* Gradient animation for Silk fallback */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Sophisticated Silk-like animation */
+@keyframes silkFlow {
+  0%, 100% { 
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; 
+  }
+  25% { 
+    background-position: 100% 50%, 50% 25%, 25% 75%, 50% 50%; 
+  }
+  50% { 
+    background-position: 200% 100%, 100% 50%, 50% 100%, 100% 100%; 
+  }
+  75% { 
+    background-position: 150% 25%, 75% 75%, 75% 25%, 75% 25%; 
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { 
+    filter: hue-rotate(0deg) brightness(1); 
+  }
+  33% { 
+    filter: hue-rotate(60deg) brightness(1.1); 
+  }
+  66% { 
+    filter: hue-rotate(-30deg) brightness(0.9); 
+  }
+}

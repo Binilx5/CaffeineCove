@@ -29,19 +29,19 @@ const Gallery: React.FC = () => {
 
   const reviews = [
     {
-      name: "Dipen Jagani",
+      name: "Rohan Sharma",
       role: "Regular Customer",
       text: "The atmosphere here is absolutely magical! The coffee is exceptional and the staff makes you feel like family. This is my go-to spot for both work and relaxation.",
       rating: 5
     },
     {
-      name: "Binil Radadiya",
+      name: "Aryan Shah",
       role: "Coffee Enthusiast",
       text: "Perfect blend of comfort and elegance. The food is fresh, the coffee is rich, and the design is simply stunning. I love spending my mornings here!",
       rating: 5
     },
     {
-      name: "Dweej Zalavadiya",
+      name: "Prince Jain",
       role: "Local Artist",
       text: "This café has become my sanctuary. The attention to detail in every aspect - from the decor to the service - is remarkable. Highly recommend!",
       rating: 5
@@ -261,11 +261,11 @@ const Gallery: React.FC = () => {
                         <p className="text-coffee/80 font-poppins text-sm sm:text-base mb-4 sm:mb-6 italic text-center leading-relaxed">
                           "{review.text}"
                         </p>
-                        <div className="flex items-end justify-center">
-                          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-natural-wood rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
+                        <div className="flex items-center justify-center">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-natural-wood rounded-full flex items-center justify-center flex-shrink-0">
                             <i className="bi bi-person text-marble-white text-sm sm:text-lg"></i>
                           </div>
-                          <div className="text-center flex-1">
+                          <div className="text-center ml-3">
                             <h4 className="font-outfit font-semibold text-coffee text-xs sm:text-sm leading-tight mb-1">{review.name}</h4>
                             <p className="text-coffee/60 font-poppins text-xs leading-tight">{review.role}</p>
                           </div>
@@ -291,11 +291,11 @@ const Gallery: React.FC = () => {
                       <p className="text-coffee/80 font-poppins text-sm sm:text-base mb-4 sm:mb-6 italic text-center leading-relaxed">
                         "{review.text}"
                       </p>
-                      <div className="flex items-end justify-center">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-natural-wood rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
+                      <div className="flex items-center justify-center">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-natural-wood rounded-full flex items-center justify-center flex-shrink-0">
                           <i className="bi bi-person text-marble-white text-sm sm:text-lg"></i>
                         </div>
-                        <div className="text-center flex-1">
+                        <div className="text-center ml-3">
                           <h4 className="font-outfit font-semibold text-coffee text-xs sm:text-sm leading-tight mb-1">{review.name}</h4>
                           <p className="text-coffee/60 font-poppins text-xs leading-tight">{review.role}</p>
                         </div>

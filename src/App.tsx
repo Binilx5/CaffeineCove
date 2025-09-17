@@ -40,12 +40,12 @@ function HomePage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-outfit font-bold text-coffee mb-3 sm:mb-4 md:mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-outfit font-bold text-coffee mb-3 sm:mb-4 md:mb-6">
                 What Our Customers Love Most
               </h2>
               <div className="w-16 sm:w-20 md:w-24 h-1 bg-natural-wood mx-auto mb-4 sm:mb-6 md:mb-8"></div>
               <p className="text-sm sm:text-base md:text-lg text-coffee/70 font-poppins max-w-2xl mx-auto px-4 mb-8">
-                Discover our most popular drinks and dishes - interact to see them come to life!
+                Discover our most popular drinks and dishes - click to see them come to life!
               </p>
             </div>
             
