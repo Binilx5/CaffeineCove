@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
 
 interface ContactPageProps {
   setCurrentPage?: (page: 'home' | 'about' | 'menu' | 'gallery' | 'contact') => void;
@@ -13,6 +14,15 @@ const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage }) => {
 
   return (
     <div className="min-h-screen bg-marble-white font-poppins">
+      <SEOHead
+        title="Contact Us - Caffeine Cove | Visit Our Café in Surat"
+        description="Visit Caffeine Cove at 215-218 Ar Mall, Mota Varachha, Surat. Open daily 9 AM - 1 AM. Call +91 9327672485 or email caffeinecove7@gmail.com"
+        keywords="caffeine cove contact, surat cafe location, contact details, address, phone number, opening hours"
+        canonicalUrl="https://caffeinecove.in/contact"
+        ogTitle="Contact Caffeine Cove - Visit Our Café in Surat"
+        ogDescription="Find us at Ar Mall, Mota Varachha, Surat. Open daily 9 AM - 1 AM. Experience warmth and taste in every cup at Caffeine Cove."
+        currentPage="contact"
+      />
       <Header setCurrentPage={setCurrentPage} currentPage="contact" />
 
       <section id="contact" className="pt-20 sm:pt-28 pb-16 sm:pb-24 bg-soft-beige">

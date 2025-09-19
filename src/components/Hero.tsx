@@ -335,7 +335,7 @@ const Hero: React.FC = () => {
                   {/* Mobile Value 1 */}
                   <div className="bg-marble-white/60 backdrop-blur-sm rounded-full px-5 py-2 sm:px-6 sm:py-2.5 border border-natural-wood/10">
                     <div className="flex items-center justify-center space-x-2">
-                      <div className="w-2 h-2 bg-coffee rounded-full"></div>
+                      <div className="w-2 h-2 bg-natural-wood rounded-full"></div>
                       <span className="font-outfit font-medium text-coffee text-sm sm:text-base">Fresh Daily Roast</span>
                     </div>
                   </div>
@@ -343,7 +343,7 @@ const Hero: React.FC = () => {
                   {/* Mobile Value 2 */}
                   <div className="bg-marble-white/60 backdrop-blur-sm rounded-full px-5 py-2 sm:px-6 sm:py-2.5 border border-natural-wood/10">
                     <div className="flex items-center justify-center space-x-2">
-                      <div className="w-2 h-2 bg-natural-wood rounded-full"></div>
+                      <div className="w-2 h-2 bg-coffee/70 rounded-full"></div>
                       <span className="font-outfit font-medium text-coffee text-sm sm:text-base">Handpicked Selection</span>
                     </div>
                   </div>
@@ -351,7 +351,7 @@ const Hero: React.FC = () => {
                   {/* Mobile Value 3 */}
                   <div className="bg-marble-white/60 backdrop-blur-sm rounded-full px-5 py-2 sm:px-6 sm:py-2.5 border border-natural-wood/10">
                     <div className="flex items-center justify-center space-x-2">
-                      <div className="w-2 h-2 bg-coffee/70 rounded-full"></div>
+                      <div className="w-2 h-2 bg-coffee rounded-full"></div>
                       <span className="font-outfit font-medium text-coffee text-sm sm:text-base">Expert Baristas</span>
                     </div>
                   </div>

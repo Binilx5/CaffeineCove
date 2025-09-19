@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
 import { createImageIntersectionObserver } from '../utils/imageUtils';
 import cafeInterior2 from '../assets/cafe-interior8.jpg';
 import cafeInterior3 from '../assets/cafe-interior12.jpg';
@@ -98,6 +99,15 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ setCurrentPage }) => {
 
   return (
     <div className="min-h-screen bg-marble-white font-poppins">
+      <SEOHead
+        title="Gallery - Caffeine Cove | Café Interior & Atmosphere"
+        description="Browse our gallery showcasing the warm and inviting atmosphere of Caffeine Cove. See our beautiful interior design and cozy spaces."
+        keywords="caffeine cove gallery, cafe interior, atmosphere, photos, cozy space, surat cafe gallery"
+        canonicalUrl="https://caffeinecove.in/gallery"
+        ogTitle="Caffeine Cove Gallery - Beautiful Café Interior & Atmosphere"
+        ogDescription="Experience the warm and inviting atmosphere of Caffeine Cove through our gallery of beautiful interior spaces and cozy seating areas."
+        currentPage="gallery"
+      />
       <Header setCurrentPage={setCurrentPage} currentPage="gallery" />
       
       <section id="gallery" className="pt-20 sm:pt-28 pb-16 sm:pb-24 bg-marble-white">

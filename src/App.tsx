@@ -8,6 +8,7 @@ import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FallingText from './components/FallingText';
+import SEOHead from './components/SEOHead';
 import AboutPage from './pages/AboutPage';
 import MenuPage from './pages/MenuPage';
 import GalleryPage from './pages/GalleryPage';
@@ -30,6 +31,15 @@ function HomePage() {
 
   return (
     <>
+      <SEOHead
+        title="Caffeine Cove - Where Warmth Meets Taste | Premium Café in Surat"
+        description="Caffeine Cove - Modern minimalist café offering premium coffee, fresh food, and warm atmosphere. Where warmth meets taste in every cup. Visit us in Surat."
+        keywords="caffeine cove, coffee shop, café, espresso, latte, food menu, cozy atmosphere, premium coffee, surat cafe"
+        canonicalUrl="https://caffeinecove.in/"
+        ogTitle="Caffeine Cove - Where Warmth Meets Taste"
+        ogDescription="Modern minimalist café offering premium coffee, fresh food, and warm atmosphere. Experience the perfect blend of comfort and quality."
+        currentPage="home"
+      />
       <Header currentPage="home" setCurrentPage={setCurrentPage} />
       <Hero />
       <About />

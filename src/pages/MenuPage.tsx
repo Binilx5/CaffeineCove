@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
 import { preloadMultipleImages } from '../utils/imageUtils';
 import drinksMenu1 from '../assets/CC_Drinks_page-0001.jpg';
 import drinksMenu2 from '../assets/CC_Drinks_page-0002.jpg';
@@ -29,6 +30,15 @@ const MenuPage: React.FC<MenuPageProps> = ({ setCurrentPage }) => {
 
   return (
     <div className="min-h-screen bg-marble-white font-poppins">
+      <SEOHead
+        title="Menu - Caffeine Cove | Premium Coffee & Fresh Food"
+        description="Explore our carefully crafted menu featuring premium coffee beverages, fresh food, and delicious snacks. Discover your new favorite at Caffeine Cove."
+        keywords="caffeine cove menu, coffee menu, drinks, food, beverages, espresso, latte, surat restaurant menu"
+        canonicalUrl="https://caffeinecove.in/menu"
+        ogTitle="Caffeine Cove Menu - Premium Coffee & Fresh Food"
+        ogDescription="Browse our extensive menu of specialty coffee drinks, fresh food, and artisanal beverages crafted with the finest ingredients."
+        currentPage="menu"
+      />
       <Header setCurrentPage={setCurrentPage} currentPage="menu" />
 
       <section id="menu" className="pt-20 sm:pt-28 pb-16 sm:pb-24 bg-marble-white">

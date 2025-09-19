@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
 import cafeInterior3 from '../assets/cafe-interior3.jpg';
 
 interface AboutPageProps {
@@ -14,6 +15,15 @@ const AboutPage: React.FC<AboutPageProps> = ({ setCurrentPage }) => {
 
   return (
     <div className="min-h-screen bg-marble-white font-poppins">
+      <SEOHead
+        title="About Us - Caffeine Cove | Our Story & Passion for Coffee"
+        description="Learn about Caffeine Cove's journey, passion for exceptional coffee, and commitment to creating a warm community space where every visit feels like coming home."
+        keywords="about caffeine cove, coffee story, cafe mission, sustainable coffee, community space, surat cafe"
+        canonicalUrl="https://caffeinecove.in/about"
+        ogTitle="About Caffeine Cove - Where Passion Meets Perfect Brew"
+        ogDescription="Discover our story of passion for exceptional coffee and commitment to creating memorable experiences in our warm, welcoming community space."
+        currentPage="about"
+      />
       <Header setCurrentPage={setCurrentPage} currentPage="about" />
 
       {/* About Us Section */}
