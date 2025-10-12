@@ -1,131 +1,80 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import logoImg from "../assets/logo.png"
+import { Coffee, Pizza, Cookie } from "phosphor-react"
+import { Croissant } from 'lucide-react'
 
-// Simple Perfect Loading Animation
-const SimpleLoader = ({ progress }: { progress: number }) => {
-  const [currentRotation, setCurrentRotation] = useState(0)
-  const [isCompleting, setIsCompleting] = useState(false)
-  const [completionRotation, setCompletionRotation] = useState(0)
-  const [stoppedAt, setStoppedAt] = useState(0)
-  
-  useEffect(() => {
-    if (progress < 100) {
-      const interval = setInterval(() => {
-        setCurrentRotation(prev => {
-          const newRotation = (prev + 6) % 360
-          setStoppedAt(newRotation) // Keep track of where we stopped
-          return newRotation
-        })
-      }, 25) // ~40fps
-      
-      return () => clearInterval(interval)
-    } else if (progress === 100 && !isCompleting) {
-      // Start completion animation from where we stopped
-      setIsCompleting(true)
-      setCompletionRotation(0) // Start completion progress from 0
-      
-      const completionInterval = setInterval(() => {
-        setCompletionRotation(prev => {
-          if (prev >= 360) {
-            clearInterval(completionInterval)
-            return 360
-          }
-          return prev + 8 // Faster completion
-        })
-      }, 16) // ~60fps for smooth completion
-    }
-  }, [progress, isCompleting, stoppedAt])
-  
-  return (
-    <div className="flex items-center justify-center">
-      {/* Simple Elegant Spinner */}
-      <div className="relative w-16 h-16 sm:w-20 sm:h-20">
-        {/* Outer Ring */}
-        <motion.div
-          className="absolute inset-0 border-4 border-coffee/20 rounded-full"
-        />
-        
-        {/* Always show the completion ring, but control its visibility */}
-        <motion.div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: isCompleting 
-              ? `conic-gradient(from ${stoppedAt}deg, #6F4E37 0deg, #6F4E37 ${completionRotation}deg, transparent ${completionRotation}deg, transparent 360deg)`
-              : `conic-gradient(from ${stoppedAt}deg, #6F4E37 0deg, #6F4E37 45deg, transparent 45deg, transparent 360deg)`, // Show current spinner position
-            borderRadius: '50%'
-          }}
-        >
-          {/* Inner cutout to create ring effect */}
-          <div className="absolute inset-1 bg-gradient-to-br from-soft-beige via-muted-sand to-marble-white rounded-full" />
-        </motion.div>
-      </div>
-    </div>
-  )
-}
-
-// Enhanced Professional Background Elements
-const ProfessionalBackgroundElements = () => {
+// Luxury Minimal Background
+const LuxuryBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Enhanced floating coffee bean shapes */}
-      {Array.from({ length: 12 }, (_, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{
-            left: `${10 + (i * 7)}%`,
-            top: `${15 + (i % 4) * 20}%`
-          }}
-          animate={{
-            y: [-15, 15, -15],
-            x: [-5, 5, -5],
-            opacity: [0.08, 0.2, 0.08]
-          }}
-          transition={{
-            duration: 5 + (i * 0.4),
-            delay: i * 0.2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <div className="w-3 h-3 sm:w-4 sm:h-4 bg-coffee/25 rounded-full shadow-sm" />
-        </motion.div>
-      ))}
+      {/* Subtle radial gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F5F0EA] via-[#F8F5F0] to-[#FAF7F2]" />
       
-      {/* Enhanced geometric patterns */}
-      <div className="absolute top-1/5 left-1/5 opacity-8">
-        <motion.div 
-          className="w-40 h-40 sm:w-48 sm:h-48 border-2 border-coffee/8 rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-      
-      <div className="absolute bottom-1/5 right-1/5 opacity-8">
-        <motion.div 
-          className="w-32 h-32 sm:w-36 sm:h-36 border border-natural-wood/12 rounded-full"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-      
-      {/* Additional professional elements */}
-      <div className="absolute top-1/2 left-1/6 opacity-6">
-        <motion.div 
-          className="w-6 h-6 sm:w-8 sm:h-8 border border-coffee/10 rotate-45"
-          animate={{ rotate: [45, 405] }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-      
-      <div className="absolute top-1/3 right-1/6 opacity-6">
-        <motion.div 
-          className="w-4 h-4 sm:w-6 sm:h-6 bg-natural-wood/15 rounded-full"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+      {/* Elegant corner frames - top left */}
+      <motion.div
+        className="absolute top-8 sm:top-12 left-8 sm:left-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 1.2, delay: 0.3 }}
+      >
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M0 0 L0 24 M0 0 L24 0" stroke="#6F4E37" strokeWidth="0.5" />
+        </svg>
+      </motion.div>
+
+      {/* Top right */}
+      <motion.div
+        className="absolute top-8 sm:top-12 right-8 sm:right-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 1.2, delay: 0.4 }}
+      >
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M48 0 L48 24 M48 0 L24 0" stroke="#6F4E37" strokeWidth="0.5" />
+        </svg>
+      </motion.div>
+
+      {/* Bottom left */}
+      <motion.div
+        className="absolute bottom-8 sm:bottom-12 left-8 sm:left-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 1.2, delay: 0.5 }}
+      >
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M0 48 L0 24 M0 48 L24 48" stroke="#6F4E37" strokeWidth="0.5" />
+        </svg>
+      </motion.div>
+
+      {/* Bottom right */}
+      <motion.div
+        className="absolute bottom-8 sm:bottom-12 right-8 sm:right-12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 1.2, delay: 0.6 }}
+      >
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M48 48 L48 24 M48 48 L24 48" stroke="#6F4E37" strokeWidth="0.5" />
+        </svg>
+      </motion.div>
+
+      {/* Subtle center glow */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(200, 164, 113, 0.03) 0%, transparent 70%)',
+          filter: 'blur(60px)'
+        }}
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.3, 0.5, 0.3]
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
     </div>
   )
 }
@@ -137,34 +86,22 @@ interface ReloadLoaderProps {
 
 const ReloadLoader: React.FC<ReloadLoaderProps> = ({ onComplete, duration = 500 }) => {
   const [progress, setProgress] = useState(0)
-  const [isCompleted, setIsCompleted] = useState(false)
   const [isExiting, setIsExiting] = useState(false)
-  const [completionFinished, setCompletionFinished] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(interval)
-          // Set completed state and wait for completion animation
           setTimeout(() => {
-            setIsCompleted(true)
-            // Wait for circle completion animation to finish
+            setIsExiting(true)
             setTimeout(() => {
-              setCompletionFinished(true)
-              // Start exit animation after completion
-              setTimeout(() => {
-                setIsExiting(true)
-                // Call onComplete after slide-up animation starts
-                setTimeout(() => {
-                  onComplete?.()
-                }, 800) // Match the slide-up animation duration
-              }, 300) // Brief pause after completion
-            }, 1000) // Time for completion animation
-          }, 100)
+              onComplete?.()
+            }, 1000)
+          }, 500)
           return 100
         }
-        return prev + 3
+        return prev + 2.5
       })
     }, duration / 100)
 
@@ -173,76 +110,144 @@ const ReloadLoader: React.FC<ReloadLoaderProps> = ({ onComplete, duration = 500 
 
   return (
     <motion.div
-      className="fixed inset-0 w-screen h-screen flex items-center justify-center bg-gradient-to-br from-soft-beige via-muted-sand to-marble-white z-[99999999999]"
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ 
-        opacity: isExiting ? 0 : 1,
-        y: isExiting ? -window.innerHeight : 0
+      className="fixed inset-0 w-screen h-screen z-[99999999999] overflow-hidden"
+      initial={{ opacity: 1 }}
+      animate={{
+        opacity: isExiting ? 0 : 1
       }}
-      transition={{ 
-        duration: isExiting ? 0.8 : 0, 
-        ease: isExiting ? [0.4, 0, 0.2, 1] : "linear"
+      transition={{
+        duration: isExiting ? 1 : 0,
+        ease: [0.16, 1, 0.3, 1]
       }}
     >
-      {/* Professional Background Elements */}
-      <ProfessionalBackgroundElements />
-      
-      {/* Enhanced Professional Texture Pattern */}
-      <div 
-        className="absolute inset-0 opacity-8"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 20%, rgba(111, 78, 55, 0.12) 0%, transparent 30%),
-            radial-gradient(circle at 80% 80%, rgba(200, 164, 113, 0.1) 0%, transparent 30%),
-            radial-gradient(circle at 50% 10%, rgba(111, 78, 55, 0.08) 0%, transparent 20%),
-            radial-gradient(circle at 10% 80%, rgba(200, 164, 113, 0.06) 0%, transparent 25%)
-          `,
-          backgroundSize: '80px 80px, 120px 120px, 60px 60px, 100px 100px'
-        }}
-      />
-      
-      {/* Simple Main Container */}
-      <div className="flex flex-col items-center justify-center space-y-6 px-6">
-        
-        {/* Simple Loading Animation and Percentage */}
-        <motion.div 
-          className="flex flex-col items-center space-y-8"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ 
-            opacity: 1, 
-            scale: isCompleted ? 1.1 : 1
-          }}
-          transition={{ 
-            duration: 0.6, 
-            ease: "easeOut",
-            scale: { duration: isCompleted ? 0.3 : 0.6 }
-          }}
-        >
-          {/* Simple Perfect Loading Animation */}
-          <SimpleLoader progress={progress} />
+      {/* Luxury Background */}
+      <LuxuryBackground />
+
+      {/* Main Content - Perfectly Centered */}
+      <div className="relative z-10 w-full h-full flex items-center justify-center">
+        <div className="w-full max-w-2xl mx-auto px-6 sm:px-8">
           
-          {/* Clean Progress Percentage */}
-          <motion.div 
-            className="text-center"
-            animate={{ 
-              opacity: progress < 100 ? [0.8, 1, 0.8] : 1,
-              scale: isCompleted ? 1.2 : 1
-            }}
-            transition={{
-              opacity: { duration: 2, repeat: progress < 100 ? Infinity : 0, ease: "easeInOut" },
-              scale: { duration: 0.3, ease: "easeOut" }
-            }}
-          >
-            <span className="text-4xl sm:text-5xl lg:text-6xl font-light text-coffee tabular-nums font-outfit">
-              {progress.toString().padStart(2, '0')}%
-            </span>
-          </motion.div>
-        </motion.div>
+          {/* Centered Content Container */}
+          <div className="flex flex-col items-center space-y-16 sm:space-y-20 md:space-y-24">
+            
+            {/* Brand Name */}
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-outfit font-light text-coffee tracking-[0.25em] uppercase mb-4">
+                Caffeine Cove
+              </h1>
+              <motion.div
+                className="w-20 h-px bg-coffee/40 mx-auto mb-4"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              />
+              <motion.p
+                className="text-[10px] sm:text-xs text-coffee/35 font-poppins tracking-[0.35em] uppercase"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+              >
+                Premium Coffee Experience
+              </motion.p>
+            </motion.div>
+
+            {/* Progress Section */}
+            <motion.div
+              className="w-full flex flex-col items-center space-y-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Percentage - Smaller Size */}
+              <motion.div
+                animate={{ scale: progress === 100 ? 1.05 : 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="flex items-baseline justify-center">
+                  <span className="text-6xl sm:text-7xl md:text-8xl font-outfit font-extralight text-coffee tabular-nums leading-none">
+                    {Math.round(progress)}
+                  </span>
+                  <span className="text-3xl sm:text-4xl font-outfit font-extralight text-coffee/50 ml-2">
+                    %
+                  </span>
+                </div>
+              </motion.div>
+
+              {/* Progress Bar */}
+              <div className="w-full max-w-md">
+                <div className="relative h-px bg-coffee/12">
+                  <motion.div
+                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#C8A471] to-[#6F4E37]"
+                    initial={{ width: '0%' }}
+                    animate={{ width: `${progress}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Food & Drink Icons */}
+              <div className="flex items-center justify-center gap-4 sm:gap-5 md:gap-6">
+                {/* Coffee */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 0.5, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  whileHover={{ scale: 1.15 }}
+                >
+                  <Coffee size={32} color="#6F4E37" />
+                </motion.div>
+
+                {/* Pizza */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 0.5, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  whileHover={{ scale: 1.15 }}
+                >
+                  <Pizza size={32} color="#6F4E37" />
+                </motion.div>
+
+                {/* Cookie */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 0.5, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  whileHover={{ scale: 1.15 }}
+                >
+                  <Cookie size={32} color="#6F4E37" />
+                </motion.div>
+
+                {/* Coffee Bean - New SVG */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 0.5, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  whileHover={{ scale: 1.15 }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#6F4E37" viewBox="0 0 256 256">
+                    <path d="M211.75,44.25C195,27.47,170.37,20.79,142.46,25.44c-26.91,4.49-53.87,19.09-75.9,41.12s-36.63,49-41.12,75.9c-4.65,27.91,2,52.51,18.81,69.29C57.54,225.05,75.75,232,96.62,232a103.66,103.66,0,0,0,16.92-1.44c26.91-4.49,53.87-19.09,75.9-41.12s36.63-49,41.12-75.9C235.21,85.63,228.53,61,211.75,44.25ZM77.87,77.87C102.56,53.19,133,39.93,159.15,39.93a62.26,62.26,0,0,1,29,6.67A108.48,108.48,0,0,0,157.1,63.54c-19.2,15.16-31.63,36.32-36.94,62.89-9.72,48.58-44.7,65.18-67.48,70.84C28.71,168.76,39.4,116.35,77.87,77.87ZM178.13,178.13c-34.69,34.68-80.71,46.78-110.32,31.27A108.72,108.72,0,0,0,98.9,192.46c19.2-15.16,31.63-36.32,36.94-62.89,9.72-48.58,44.7-65.18,67.48-70.84C227.29,87.24,216.6,139.65,178.13,178.13Z"></path>
+                  </svg>
+                </motion.div>
+
+                {/* Croissant */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 0.5, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  whileHover={{ scale: 1.15 }}
+                >
+                  <Croissant size={32} color="#6F4E37" />
+                </motion.div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
       </div>
-      
-      {/* Warm Café Vignette Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-coffee/5 via-transparent to-coffee/5 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-natural-wood/3 via-transparent to-walnut-brown/8 pointer-events-none" />
     </motion.div>
   )
 }

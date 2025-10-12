@@ -120,7 +120,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage }) => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <i className="bi bi-clock-history text-natural-wood text-xl"></i>
-                                <span className="font-poppins font-bold text-natural-wood text-xl">9:00 AM - 1:00 AM</span>
+                                <span className="font-poppins font-bold text-natural-wood text-xl">10:00 AM - 1:00 AM</span>
                             </div>
                         </div>
                     </div>
